@@ -1,0 +1,6 @@
+{
+    "dotnet.defaultSolution": "ReadExcelFile.sln",
+    "cSpell.words": [
+        "Npgsql"
+    ]
+}
