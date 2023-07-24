@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using ReadExcelFile.Data;
 
@@ -13,7 +14,18 @@ public class FileUploadService : IFileUploadService
             _context = context;
         }
 
-        public async Task<string> UploadExcelFile(IFormFile file)
+    public async Task<List<Upload>> GetAll()
+    {
+        var data = await _context.Uploads.ToListAsync();
+        if(data == null)
+        {
+            return null;
+        }
+
+        return data!;
+    }
+
+    public async Task<string> UploadExcelFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return "Please upload a valid Excel file";
